@@ -51,12 +51,5 @@ describe('ReckonJS', function() {
 		   	assert.notEqual(multiScopeReckoned, scope2.hobby);
 		});
 	});
-
-	// describe('defines', function(){
-	// 	it('should render define', function(){
-	// 	   assert.equal("<div>http</div>", definescompiled({foo:"http"}));
-	// 	   assert.equal("<div>http:&#47;&#47;abc.com</div>", definescompiled({foo:"http://abc.com"}));
-	// 	   assert.equal("<div></div>", definescompiled({}));
-	// 	});
-	// });
+	
 });
