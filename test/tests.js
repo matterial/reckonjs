@@ -1,5 +1,4 @@
 var assert = require("assert"), reckon = require("../reckon.js");
-var window = {};
 
 describe('ReckonJS', function() {
 	
