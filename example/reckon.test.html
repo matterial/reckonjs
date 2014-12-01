@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ReckonJS - Example</title>
+	<script type="text/javascript" src="../reckon.js"></script>
+	<script>
+		
+		/**
+		 * Testing global variable interpolation
+		 * @type {String}
+		 */
+		var favColor = 'red';
+
+		/**
+		 * The scope to be passed to the reckon call
+		 * @type {Object}
+		 */
+		var scope = {
+			firstName: "John",
+			lastName: "Doe",
+			dynamicName: '{{firstName}}',
+			age: 20,
+			ageNextYear: function() {
+				return this.age+1;
+			}
+		};
+		
+		/**
+		 * The string to be reckoned
+		 * @type {String}
+		 */
+		var str = "Mr. {{firstName.substr(0, 1)}} is a javascript enthusiast - his last name is {{lastName}}. Currently, he is {{age}} years old. Next year, he will turn {{ageNextYear}}. His favorite color is {{favColor}}.";
+		
+		/**
+		 * Use it as string prototype
+		 */
+		var compiledString = str.reckon(scope);
+		document.write(compiledString);
+
+		/**
+		 * Use it as a function
+		 */
+		var compiledObject = reckon({text: str}) //returns an object
+		document
+
+
+	</script>
+</head>
+<body>
+	<div id="container">
+		
+	</div>
+</body>
+</html>

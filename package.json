@@ -1,0 +1,30 @@
+{
+  "name": "ReckonJS",
+  "version": "0.1.0",
+  "description": "A lightweight string interpolation library for JavaScript",
+  "main": "reckon.js",
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "~0.4",
+    "grunt-contrib-jshint": "~0.9",
+    "grunt-contrib-uglify": "~0.2",
+    "grunt-contrib-watch": "~0.6",
+    "assert": "*",
+    "mocha": "*"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/"
+  },
+  "keywords": [
+    "interpolation",
+    "javascript",
+    "templating",
+    "string"
+  ],
+  "author": "Riten Vagadiya",
+  "license": "MIT"
+}
