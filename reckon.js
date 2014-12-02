@@ -1,4 +1,4 @@
-(function() {
+	(function() {
 	'use strict';
 
 	/**
@@ -34,13 +34,13 @@
 		 * Define delimiter that marks beginning of interpolation
 		 * @type {String}
 		 */
-		var delimStart = reckonSettings.delimStart;
+		this.delimStart = reckonSettings.delimStart;
 		
 		/**
 		 * Define delimiter that marks end of interpolation
 		 * @type {String}
 		 */
-		var delimEnd = reckonSettings.delimEnd;
+		this.delimEnd = reckonSettings.delimEnd;
 
 		/**
 		 * Get the text from params
@@ -75,7 +75,7 @@
 			 * The required regexp computed using delims in settings
 			 * @type {RegExp}
 			 */
-			var re = new RegExp(['/{%(.+?)%}|', this.delimStart, '(.+?)', this.delimEnd, '/g'].join(''));
+			var re = new RegExp(['{%(.+?)%}|', this.delimStart, '(.+?)', this.delimEnd].join(''), 'g');
 
 			/**
 			 * Reference the instance
@@ -95,7 +95,7 @@
 			 * @param  {String} $2 Content of second match group
 			 * @return {String}    Interpolated string
 			 */
-			rInstance.text = rInstance.text.replace(/{%(.+?)%}|{{(.+?)}}/g, function(_, $1, $2) {
+			rInstance.text = rInstance.text.replace(re, function(_, $1, $2) {
 				var computed;
 
 				/**
