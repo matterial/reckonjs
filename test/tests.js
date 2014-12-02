@@ -49,6 +49,16 @@ describe('ReckonJS', function() {
 		   	assert.notEqual(multiScopeReckoned, scope.lastName);
 		   	assert.notEqual(multiScopeReckoned, scope2.hobby);
 		});
+		
+		it('should allow custom delimiters', function() {
+			var customDelimString = 'My name is <<firstName>> <<lastName>>.';
+			var config = {
+				delimStart: '<<',
+				delimEnd: '>>'
+			}
+			console.log(reckon().applyConfig(config).compile({text: customDelimString, scope: scope}).toString());
+		   	assert.notEqual(reckon().applyConfig(config).compile({text: customDelimString, scope: scope}).toString().indexOf(scope.firstName), -1);
+		});		
 	});
 	
 });

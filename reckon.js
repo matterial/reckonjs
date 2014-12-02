@@ -5,7 +5,7 @@
 	 * Reckon settings
 	 * @type {Object}
 	 */
-	var reckonSettings = {
+	var settings = {
 		stringPrototype: true,
 		delimStart: '{{',
 		delimEnd: '}}'
@@ -34,30 +34,36 @@
 		 * Define delimiter that marks beginning of interpolation
 		 * @type {String}
 		 */
-		this.delimStart = reckonSettings.delimStart;
+		this.delimStart = settings.delimStart;
 		
 		/**
 		 * Define delimiter that marks end of interpolation
 		 * @type {String}
 		 */
-		this.delimEnd = reckonSettings.delimEnd;
+		this.delimEnd = settings.delimEnd;
 
 		/**
 		 * Get the text from params
 		 * @type {String}
 		 */
-		this.text = params.text;
+		this.text = typeof params !=="undefined" && params.text !== "undefined" ? params.text : '';
 
 		/**
 		 * Get the scope from the params and ensure its an array, if not, make it one
 		 * @type {Array}
 		 */
-		this.scopes = [].concat(params.scope);
+		this.scopes = typeof params !=="undefined" && typeof params.scope !== "undefined" ? [].concat(params.scope) : [];
+
+		/**
+		 * Check if config needs to be applied from the global settings
+		 */
+		this.applyConfig();
 
 		/**
 		 * Compile the initial input
 		 */
-		this.compile();
+		if (typeof params !=="undefined" && typeof params.text !== "undefined")
+			this.compile();
 	};
 
 	/**
@@ -70,7 +76,13 @@
 		 * The function responsible for interpolation
 		 * @return {Reckon} return self object for chaining
 		 */
-		compile: function() {
+		compile: function(param) {
+
+			if (typeof param !== "undefined") {
+				this.text = param.text;
+				this.scope = [].concat(param.scope);
+			}
+
 			/**
 			 * The required regexp computed using delims in settings
 			 * @type {RegExp}
@@ -169,7 +181,7 @@
 						 * If no scope is passed, let us assume the global scope
 						 * @type {Any}
 						 */
-						computed = scopeBox($2, window);
+						computed = scopeBox($2, (typeof window !== "undefined" ? window : {}));
 					}
 
 					/**
@@ -192,27 +204,67 @@
 		},
 		toString: function() {
 			return this.text;
+		},
+		/**
+		 * Modify in-built settings
+		 * @param  {Object} setting Delim settings
+		 * @return {Object}         Return self for chaining
+		 */
+		applyConfig: function(setting) {
+			if (typeof setting === "undefined") {
+				if (typeof window !== "undefined") {
+					if (typeof window.reckonSettings !== "undefined") {
+						if (typeof window.reckonSettings.delimStart) {
+							settings.delimStart = window.reckonSettings.delimStart;
+						}
+						if (typeof window.reckonSettings.delimEnd) {
+							settings.delimEnd = window.reckonSettings.delimEnd;
+						}
+					}
+				}
+			} else {
+				if (typeof setting.delimStart) {
+					settings.delimStart = setting.delimStart;
+				}
+				if (typeof setting.delimEnd) {
+					settings.delimEnd = setting.delimEnd;
+				}
+			}
+			return this;
 		}
 	}
+
+	/**
+	 * Add method to string's prototype for easier access
+	 */
+	if (settings.stringPrototype === true) {
+
+		/**
+		 * Reckon added to string's prototype
+		 * @param  {Array} scopes list of scope objects
+		 * @return {String}       the reckoned string
+		 */
+		String.prototype.reckon = function(scopes) {
+			return Reckon({text: this, scope: scopes}).toString();
+		}
+	}
+
 	if (typeof window !== "undefined") {
 		if (!window.reckon) {
 			window.reckon = Reckon;
-			window.reckonSettings = reckonSettings;	
-
+			
 			/**
-			 * Add method to string's prototype for easier access
+			 * Read user custom settings
 			 */
-			if (reckonSettings.stringPrototype === true) {
-
-				/**
-				 * Reckon added to string's prototype
-				 * @param  {Array} scopes list of scope objects
-				 * @return {String}       the reckoned string
-				 */
-				String.prototype.reckon = function(scopes) {
-					return window.reckon({text: this, scope: scopes}).toString();
+			if (typeof window.reckonSettings !== "undefined") {
+				if (typeof window.reckonSettings.delimStart) {
+					settings.delimStart = window.reckonSettings.delimStart;
+				}
+				if (typeof window.reckonSettings.delimEnd) {
+					settings.delimEnd = window.reckonSettings.delimEnd;
 				}
 			}
+
 		}
 	} else {
 		module.exports = Reckon;
