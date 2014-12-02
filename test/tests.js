@@ -56,8 +56,11 @@ describe('ReckonJS', function() {
 				delimStart: '<<',
 				delimEnd: '>>'
 			}
-			console.log(reckon().applyConfig(config).compile({text: customDelimString, scope: scope}).toString());
-		   	assert.notEqual(reckon().applyConfig(config).compile({text: customDelimString, scope: scope}).toString().indexOf(scope.firstName), -1);
+			var myScope = {
+				firstName: 'Jane',
+				lastName: 'Doh'
+			}
+		   	assert.notEqual(reckon().applyConfig(config).compile({text: customDelimString, scope: myScope}).toString().indexOf(myScope.firstName), -1);
 		});		
 	});
 	

@@ -78,10 +78,16 @@
 		 */
 		compile: function(param) {
 
+			/**
+			 * Reference the instance
+			 */
+			var rInstance = this;
+
 			if (typeof param !== "undefined") {
-				this.text = param.text;
-				this.scope = [].concat(param.scope);
+				rInstance.text = param.text;
+				rInstance.scopes = [].concat(param.scope);
 			}
+
 
 			/**
 			 * The required regexp computed using delims in settings
@@ -90,15 +96,10 @@
 			var re = new RegExp(['{%(.+?)%}|', this.delimStart, '(.+?)', this.delimEnd].join(''), 'g');
 
 			/**
-			 * Reference the instance
+			 * Save the raw text
+			 * @type {String}
 			 */
-			 var rInstance = this;
-
-			 /**
-			  * Save the raw text
-			  * @type {String}
-			  */
-			 rInstance.raw = rInstance.text;
+			rInstance.raw = rInstance.text;
 
 			/**
 			 * Compute and assign to compiledText property of the same object
@@ -107,6 +108,7 @@
 			 * @param  {String} $2 Content of second match group
 			 * @return {String}    Interpolated string
 			 */
+
 			rInstance.text = rInstance.text.replace(re, function(_, $1, $2) {
 				var computed;
 
@@ -230,6 +232,9 @@
 					settings.delimEnd = setting.delimEnd;
 				}
 			}
+			this.delimStart = settings.delimStart;
+			this.delimEnd = settings.delimEnd;
+			
 			return this;
 		}
 	}
