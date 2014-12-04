@@ -6,17 +6,13 @@ In its own words, Sublime Text is a sophisticated text editor for code, markup a
 
 Sublime Text is a cross platform editor that is built close to the metal (C++) with a minimalist UI, fast performance and great memory management that supports marvellous features via its Plugins API (Python). With visually appealing themes, JSON-based settings, great syntax highlighting and wide support for code bundles and build routines, Sublime Text is a winner for anyone related to code.
 
-I have been a keyboard worshipper and a mouse atheist (If that makes any sense) and Sublime Text allows for open configuration of keyboard shortcuts and key bindings - the power of which any *Vim* enthusiast will be able to relate with.
-
-Given an opportunity to talk about Sublime Text, here is a quick presentation I've compiled that highlights some of it's important features for those who are new to Sublime Text: <a href="http://riten.io/sublime/" target="_blank">**Presentation**</a>
-
-## New to Sublime Text? Some basic steps below can help.
+## Setup Sublime Text Yourself
 
 Let us walk through setting up Sublime Text with the needed awesome plugins.
 
 ### 1. Watch the Tech Talk
 
-Given an opportunity to talk about Sublime Text, here is a quick presentation I've compiled that highlights some of it's important features for those who are new to Sublime Text: <a href="http://riten.io/sublime/" target="_blank">**Presentation**</a>
+Follow here to watch the tech talk (or clone this repo and checkout the `presentation` folder: <a href="http://riten.io/sublime/" target="_blank">**Presentation**</a>
 
 ### 2. Download Sublime Text
 
@@ -25,8 +21,6 @@ Sublime Text can be downloaded for free and evaluated without any restrictions f
 You can download it now <a href="http://www.sublimetext.com/2" title="Download Sublime Text" target="_blank">from here</a>.
 
 ### 3. Install Package Control
-
-You can download Sublime Text plugins directly from their plugins page and manually add it to the plugins directory, but we'll skip that part. 
 
 Let us download one plugin, that allows us to download all other plugins from within Sublime Text. **Crafty.**
 
