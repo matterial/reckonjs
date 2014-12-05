@@ -1,6 +1,6 @@
 {
   "name": "reckonjs",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A lightweight string interpolation library for JavaScript",
   "main": "reckon.js",
   "dependencies": {},
