@@ -1,5 +1,5 @@
-reckonjs
-========
+Reckon JS
+=========
 
 A lightweight string interpolation library for JavaScript.
 
