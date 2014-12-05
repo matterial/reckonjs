@@ -26,7 +26,8 @@ Below are simple examples of how Reckon JS can be used:
 *Reckon via string prototype:*
 
 	/*  */
-	var introduction = "My name is {{fullName}}, and next year, I will turn {{ageNextYear}}".reckon(scope);
+	var introduction = "My name is {{fullName}}, and next year, I will turn {{ageNextYear}}";
+	introduction = introduction.reckon(scope);
 	// My name is John, and next year, I will turn 21
 
 *Reckon via JS function:*
@@ -59,7 +60,8 @@ Below are simple examples of how Reckon JS can be used:
 
 Strings enclosed between `{%` and `%}` are not interpolated.
 
-	"My name is {{fullName}} {% and this part will not be interpreted even if you used a variable here %}".reckon(scope);
+	"My name is {% {{fullName}} %}".reckon(scope);
+	// My name is {{fullName}}
 
 *Custom delimiters:*
 
