@@ -37,6 +37,8 @@ Below are simple examples of how Reckon JS can be used:
 
 ### In NodeJS
 
+	npm install reckonjs
+
 *Sample Data:*
 
 	var reckon = require('reckonjs');
@@ -52,7 +54,6 @@ Below are simple examples of how Reckon JS can be used:
 	var introduction = "My name is {{fullName}}, and next year, I will turn {{ageNextYear}}";
 	introduction = reckon({text: introduction, scope: scope}); //returns a reckon object that can be output as string
 	// My name is John, and next year, I will turn 21
-
 
 ## Other Settings
 

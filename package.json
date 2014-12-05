@@ -1,5 +1,5 @@
 {
-  "name": "ReckonJS",
+  "name": "reckonjs",
   "version": "0.1.0",
   "description": "A lightweight string interpolation library for JavaScript",
   "main": "reckon.js",
