@@ -76,3 +76,5 @@ Strings enclosed between `{%` and `%}` are not interpolated.
 ## Contribution
 
 ReckonJS is created by <a href="https://twitter.com/ritenv" target="blank">@ritenv</a>. Contributions are open and welcome. For any issues, please raise it in the issues section and feel free to send pull requests to fix them.
+
+Any recommendations are welcome.
